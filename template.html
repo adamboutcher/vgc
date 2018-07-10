@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-GB" prefix="og: http://ogp.me/ns#">
+	<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+		<meta name="description" content="A list of a personal video game collection."/>
+		<meta name="generator" content="aboutcher-vgc 0.1.0"/>
+    <title>Games Database</title>
+		<link rel="shortcut icon" href="assets/img/favicon.png" />
+		<link rel="icon" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/css/fontawesome.all.css" />
+		<link rel="stylesheet" href="assets/css/theme.css" />
+  </head>
+	<body data-spy="scroll" data-target="#consolelist" data-offset="55">
+		<header>
+      <div class="collapse bg-dark fixed-top" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-7 py-4">
+              <h4 class="text-white">Add New Game</h4>
+							<br/>
+							<form>
+  							<div class="form-group row">
+									<label for="console" class="col-sm-3 col-form-label text-muted">Platform</label>
+									<div class="col-sm-9">
+										<select class="form-control" id="console" name="console">
+											<option selected disabled>Select an Option</option>
+											<option>Sega Dreamcast</option>
+											<option>PC (Steam)</option>
+										</select>
+	 								</div>
+								</div>
+								<div class="form-group row">
+									<label for="ff" class="col-sm-3 col-form-label text-muted">Form Factor</label>
+									<div class="col-sm-9">
+										<select class="form-control" id="ff" name="ff">
+											<option selected disabled>Select an Option</option>
+											<option>Disc</option>
+											<option>Cartidge</option>
+											<option>Card</option>
+											<option>ROM CHIP</option>
+											<option>ROM SW</option>
+											<option>Accessory</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="title" class="col-sm-3 col-form-label text-muted">Title</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="title" name="title" placeholder="Sonic the Hedgehog">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="condition" class="col-sm-3 col-form-label text-muted">Condition</label>
+									<div class="col-sm-9">
+										<select class="form-control" id="condition" name="condition">
+											<option selected disabled name="condition" id="condition">Select an Option</option>
+											<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (Mint Condition)</option>
+											<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (Excellent)</option>
+											<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (Good)</option>
+											<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (OK)</option>
+											<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (Poor)</option>
+											<option value="0">&#9734;&#9734;&#9734;&#9734;&#9734; (Ruined	)</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="notes" class="col-sm-3 col-form-label text-muted">Notes</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="notes" name="notes" placeholder="..." />
+									</div>
+								</div>
+								<div style="text-align:right;"><button type="submit" class="btn btn btn-outline-secondary mb-2"><i class="fas fa-save"></i> Save Game</button></div>
+							</form>
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-4 offset-md-1 py-4">
+							<h4 class="text-white">About</h4>
+							<p class="text-muted">Video Game Collection of VGC for short was written by Adam Boutcher.</p>
+							<p class="text-muted">It was primarily created for myself as a simple tool.</p>
+							<br/>
+              <h4 class="text-white">Contact Me</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://www.aboutcher.co.uk" class="text-white">Website</a></li>
+                <li><a href="https://github.com/adamboutcher" class="text-white">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/adamboutcher/" class="text-white">LinkdIn</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow fixed-top">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+						<i class="fas fa-gamepad"></i>&nbsp;
+						<strong>Video Game Collection</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+		<nav id="consolelist" class="navbar navbar-light bg-light justify-content-center shadow-sm fixed-bottom">
+			<ul class="nav nav-pills nav-fill">
+				<li class="nav-item"><a class="nav-link btn-light" href="#dreamcast">Sega Dreamcast</a></li>
+ 			 	<li class="nav-item"><a class="nav-link btn-light" href="#steam">PC (Steam)</a></li>
+ 				<li class="nav-item"><a class="nav-link btn-light" href="#n64">Nintendo N64</a></li>
+				<li class="nav-item"><a class="nav-link btn-light" href="#pcb">PC (Boxed)</a></li>
+				<li class="nav-item"><a class="nav-link btn-light" href="#gamecube">Nintendo Camecube</a></li>
+				<li class="nav-item"><a class="nav-link btn-light" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i></a></li>
+			</ul>
+		</nav>
+		<main role="main">
+			<div class="py-5" id="dreamcast">
+				<div class="container">
+					<h3>Sega Dreamcast</h2>
+					<table class="table table-striped">
+						<thead><tr><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Condition</th><th scope="col">Notes</th><th style="width:65px;"></th></tr></thead>
+						<tbody>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="py-5 bg-light shadow-sm" id="steam">
+				<div class="container">
+					<h3>PC (Steam)</h3>
+					<table class="table table-striped">
+						<thead><tr><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Condition</th><th scope="col">Notes</th><th style="width:65px;"></th></tr></thead>
+							<tbody>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+								<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="py-5" id="n64">
+				<div class="container">
+					<h3>Nintendo N64</h2>
+					<table class="table table-striped">
+						<thead><tr><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Condition</th><th scope="col">Notes</th><th style="width:65px;"></th></tr></thead>
+						<tbody>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="py-5 bg-light shadow-sm" id="pcb">
+				<div class="container">
+					<h3>PC (Boxed)</h2>
+					<table class="table table-striped">
+						<thead><tr><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Condition</th><th scope="col">Notes</th><th style="width:65px;"></th></tr></thead>
+						<tbody>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="py-5" id="gamecube">
+				<div class="container">
+					<h3>Nintendo Gamecube</h2>
+					<table class="table table-striped">
+						<thead><tr><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Condition</th><th scope="col">Notes</th><th style="width:65px;"></th></tr></thead>
+						<tbody>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" 	title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+							<tr><td>Sonic Adventures</td><td>Disc</td><td><span data-toggle="tooltip" data-placement="top" title="OK">&#9733;&#9733;&#9734;&#9734;&#9734;</span></td><td></td><td class="text-right"><button data-toggle="tooltip" data-placement="left" title="Delete" type="button" class="btn btn-sm btn-ss btn-danger"><i class="fas fa-trash-alt"></i></button></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+		<footer class="text-muted">
+			<div class="container">
+				<p><small>Video Game Collection database generated by <a href="#"><em>aboutcher-vgc</em></a> by <a href="https://www.aboutcher.co.uk">Adam Boutcher</a>.</small></p>
+			</div>
+		</footer>
+
+		<!-- Add new console modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      		<div class="modal-header">
+        		<h5 class="modal-title">Add New Console</h5>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      		</div>
+      		<div class="modal-body">
+
+						<div class="form-group row">
+							<label for="title" class="col-sm-3 col-form-label text-muted">Manufacturer</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="title" name="title" placeholder="Sega">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="title" class="col-sm-3 col-form-label text-muted">Manufacturer</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="title" name="title" placeholder="Sonic the Hedgehog">
+							</div>
+						</div>
+
+					</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        		<button type="button" class="btn btn-success"><i class="fas fa-save"></i> Save Console</button>
+      		</div>
+    		</div>
+  		</div>
+		</div>
+		<!-- end modal -->
+
+		<script src="assets/js/jquery-3.3.1.slim.min.js"></script>
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script>$(function () { $('[data-toggle="tooltip"]').tooltip() })</script>
+	</body>
+</html>
