@@ -1,6 +1,6 @@
 <?PHP
 date_default_timezone_set('Europe/London');
-$version="1.0.0";
+$version="1.0.5";
 if (file_exists("db/vgc.sqlite")) {
 	$db = new PDO("sqlite:db/vgc.sqlite");
 } else {
@@ -13,7 +13,7 @@ if (file_exists("db/vgc.sqlite")) {
 }
 
 if (isset($_POST['add'])) {
-	if ((strtolower($_POST['add']) == "game")&&((!empty($_POST['title']))&&(!empty($_POST['condition']))&&(!empty($_POST['ff']))&&(!empty($_POST['console']))))  {
+	if ((strtolower($_POST['add']) == "game")&&((!empty($_POST['title']))&&(isset($_POST['condition']))&&(!empty($_POST['ff']))&&(!empty($_POST['console']))))  {
 		if (empty($_POST['notes'])) { $notes = ""; } else { $notes = $_POST['notes']; }
 		$qry = $db->prepare("INSERT INTO games ('id','console','title','condition','notes','formfactor') VALUES (NULL, :console, :title, :condition, :notes, :ff);");
 		$qry->bindParam(':title',$_POST['title']);
@@ -35,13 +35,33 @@ if (isset($_POST['add'])) {
                 $qry->bindParam(':id',$_POST['id']);
 		$deleted = $qry->execute();
 	} else if ((strtolower($_POST['del']) == "console")&&(!empty($_POST['id']))) {
+                $qry = $db->prepare("DELETE FROM games WHERE console = :id;");
+                $qry->bindParam(':id',$_POST['id']);
+                $deleted = $qry->execute();
                 $qry = $db->prepare("DELETE FROM console WHERE id = :id;");
                 $qry->bindParam(':id',$_POST['id']);
                 $deleted = $qry->execute();
 	}
+} else if (isset($_POST['bak'])) {
+	$filename="db/vgc.sqlite.bak";
+	$backup = copy("db/vgc.sqlite",$filename);
+	if (file_exists($filename)) {
+	    	$finfo = finfo_open(FILEINFO_MIME_TYPE);
+	    	header('Content-Type: ' . finfo_file($finfo, $filename));
+ 		finfo_close($finfo);
+		header('Content-Disposition: attachment; filename='.basename($filename));
+		header('Expires: 0');
+    		header('Cache-Control: must-revalidate');
+    		header('Pragma: public');
+    		header('Content-Length: ' . filesize($filename));
+    		ob_clean();
+    		flush();
+    		readfile($filename);
+    		exit;
+	}
 }
 
-$qry = $db->query("SELECT * FROM console ORDER BY id ASC;");
+$qry = $db->query("SELECT * FROM console ORDER BY manufacturer, model ASC;");
 $consoles = $qry->fetchAll();
 
 ?>
@@ -76,7 +96,7 @@ $consoles = $qry->fetchAll();
 											<option selected disabled>Select an Option</option>
 											<?php
 												foreach ($consoles as $console) {
-													echo '<option value="'.$console['id'].'">'.$console['model'].'</option>';
+													echo '<option value="'.$console['id'].'">'.htmlentities($console['model']).'</option>';
 												}
 											?>
 										</select>
@@ -94,6 +114,7 @@ $consoles = $qry->fetchAll();
 											<option value="ROM Chip">ROM CHIP</option>
 											<option value="ROM Dump">ROM Dump</option>
 											<option value="Accessory">Accessory</option>
+											<option value="Console">Console</option>
 										</select>
 									</div>
 								</div>
@@ -123,8 +144,12 @@ $consoles = $qry->fetchAll();
 										<input type="text" class="form-control" id="notes" name="notes" placeholder="..." />
 									</div>
 								</div>
-								<input type="hidden" value="game" name="add"/>
-								<div style="text-align:right;"><button type="submit" class="btn btn btn-outline-secondary mb-2"><i class="fas fa-save"></i> Save Game</button></div>
+								<div style="text-align:right;">
+									<button name="" value="" disabled="disabled" type="submit" class="btn btn btn-outline-secondary mb-2"><i class="fas fa-file"></i> Import CSV</button>
+                                                                	<button name="" value="" disabled="disabled" type="submit" class="btn btn btn-outline-secondary mb-2"><i class="fas fa-upload"></i> Upload DB</button>
+                                                                	<button name="bak" value="true" type="submit" class="btn btn btn-outline-secondary mb-2"><i class="fas fa-download"></i> Download DB</button>
+									<button name="add" value="game" type="submit" class="btn btn btn-success mb-2"><i class="fas fa-save"></i> Save Game</button>
+								</div>
 							</form>
             </div>
             <div class="d-none d-sm-none d-md-block col-md-4 offset-md-1 py-4">
@@ -159,7 +184,13 @@ $consoles = $qry->fetchAll();
 			<ul class="nav nav-pills nav-fill">
                           <?php
                              foreach ($consoles as $console) {
-                               echo '<li class="nav-item"><a class="nav-link btn-light" href="#'.$console['shortname'].'">'.ucwords($console['manufacturer']).' '.ucwords($console['model']).'</a></li>';
+				$qry = $db->prepare("SELECT COUNT(*) FROM games WHERE console = :console ORDER BY title ASC;");
+				$qry->bindParam(':console', $console['id']);
+                                $qry->execute();
+                                $count=$qry->fetchAll();
+				if ($count[0][0] !=0) {
+	                               echo '<li class="nav-item"><a class="nav-link btn-light" href="#'.$console['shortname'].'">'.htmlentities(ucwords($console['manufacturer'])).' '.htmlentities(ucwords($console['model'])).'</a></li>';
+				}
                              }
                           ?>
    			  <li class="nav-item"><a class="nav-link btn-light" data-toggle="modal" data-target="#consoleModal"><i class="fas fa-plus"></i></a></li>
@@ -178,6 +209,9 @@ $consoles = $qry->fetchAll();
 		if ((isset($deleted))&&($deleted === true)) {
 			echo "<div class=\"container\" style=\"margin-top:65px;\"><div class=\"alert alert-warning\">Item Removed.<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div></div>";
 		}
+		if ((isset($backup))&&($backup === true)) {
+			echo "<div class=\"container\" style=\"margin-top:65px;\"><div class=\"alert alert-info\">Database Backed up.<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div></div>";
+		}
 		?>
 
 			<?php
@@ -187,24 +221,26 @@ $consoles = $qry->fetchAll();
 				$qry->bindParam(':console', $console['id']);
 				$qry->execute();
 				$games=$qry->fetchAll();
+				if (count($games) != 0) {
 				?>
 				<div class="py-5 <?php if($i%2==0){ echo "bg-light shadow-sm"; } ?>" id="<?php echo $console['shortname']; ?>"><div class="container">
-					<h3 style="float:left;"><?php echo $console['manufacturer']." ".$console['model'];?></h3>
+					<h3 style="float:left;"><?php echo htmlentities(ucwords($console['manufacturer']))." ".htmlentities(ucwords($console['model']));?></h3>
 					<form method="post">
                                         	<input type="hidden" name="id" value="<?php echo $console['id']; ?>" />
                                                 <input type="hidden" name="del" value="console" />
                                                 <button data-toggle="tooltip" data-placement="left" title="Delete Console" type="submit" class="btn btn-sm btn-ss btn-light" style="float:right;"><i class="fas fa-trash-alt"></i></button>
                                         </form>
+					<span style="float:right;margin-right:10px;"><?PHP echo count($games); ?> Items</span>
 					<div tyle="clear:both";></div>
 					<table class="table table-striped">
-						<thead><tr><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Condition</th><th scope="col">Notes</th><th style="width:65px;"></th></tr></thead>
+						<thead><tr><th scope="col">Title</th><th scope="col">Type</th><th scope="col">Condition</th><th scope="col">Notes</th><th style="width:120px;"></th></tr></thead>
 						<tbody>
 						<?php
 						foreach ($games as $game) {
 						?>
 						<tr>
-							<td><?php echo $game['title']; ?></td>
-							<td><?php echo $game['formfactor']; ?></td>
+							<td><?php echo htmlentities($game['title']); ?></td>
+							<td><?php echo htmlentities($game['formfactor']); ?></td>
 							<td>
 								<?php
 								switch($game['condition']) {
@@ -230,7 +266,7 @@ $consoles = $qry->fetchAll();
 								?>
 
 							</td>
-							<td><?php echo $game['notes']; ?></td>
+							<td><?php echo htmlentities($game['notes']); ?></td>
 							<td class="text-right"><form method="post">
 								<input type="hidden" name="id" value="<?php echo $game['id']; ?>" />
 								<input type="hidden" name="del" value="game" />
@@ -244,6 +280,8 @@ $consoles = $qry->fetchAll();
 					</table>
 				</div></div>
 				<?php
+					$consoles_count[$console['shortname']]=count($games);
+				}
 				$i++;
 			}
 			if (count($consoles) == 0 ) {
@@ -260,7 +298,13 @@ $consoles = $qry->fetchAll();
 		</main>
 		<footer class="text-muted">
 			<div class="container">
-				<p><small>Video Game Collection database generated by <a href="https://github.com/adamboutcher/vgc"><em>aboutcher-vgc <?php echo $version; ?></em></a> by <a href="https://www.aboutcher.co.uk">Adam Boutcher</a>.</small></p>
+				<?php
+				$total=count($consoles);
+				 foreach ($consoles_count as $count) {
+					$total=$total+$count;
+				}
+				?>
+				<p><small>Database contains <em><?php echo $total; ?></em> entries. Video Game Collection database generated by <a href="#"><em>aboutcher-vgc <?php echo $version; ?></em></a> by <a href="https://www.aboutcher.co.uk">Adam Boutcher</a>.</small></p>
 			</div>
 		</footer>
 
